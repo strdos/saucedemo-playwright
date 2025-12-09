@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "bundler",
+    "useDefineForClassFields": false,
+    "strict": true,
+    "esModuleInterop": true
+  }
+}
