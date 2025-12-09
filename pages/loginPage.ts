@@ -3,9 +3,9 @@ import { Page } from '@playwright/test';
 export class LoginPage {
   constructor(private page: Page) {}
 
-  readonly username = this.page.getByPlaceholder('Username');
-  readonly password = this.page.getByPlaceholder('Password');
-  readonly loginButton = this.page.getByRole('button', { name: 'Login' });
+  readonly username = this.page.getByTestId('username');
+  readonly password = this.page.getByTestId('password');
+  readonly loginButton = this.page.getByTestId('login-button');
 
   async goto() {
     await this.page.goto('/');
