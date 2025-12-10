@@ -19,15 +19,8 @@
       "@fixtures/*": ["fixtures/*"],
       "@utils/*": ["utils/*"]
     },
-    
+
     "ignoreDeprecations": "6.0"
   },
-  "include": [
-    "tests",
-    "pages",
-    "fixtures",
-    "utils",
-    "test-data",
-    "playwright.config.ts"
-  ]
+  "include": ["tests", "pages", "fixtures", "utils", "test-data", "playwright.config.ts"]
 }
