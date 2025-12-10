@@ -6,6 +6,7 @@ export class LoginPage {
   readonly username = this.page.getByTestId('username');
   readonly password = this.page.getByTestId('password');
   readonly loginButton = this.page.getByTestId('login-button');
+  readonly error = this.page.getByTestId('error');
 
   async goto() {
     await this.page.goto('/');
