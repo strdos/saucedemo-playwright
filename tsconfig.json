@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "bundler",
+
+    "strict": true,
+    "esModuleInterop": true,
+    "useDefineForClassFields": false,
+
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "types": ["node", "playwright"],
+
+    "baseUrl": ".",
+    "paths": {
+      "@pages/*": ["pages/*"],
+      "@test-data/*": ["test-data/*"],
+      "@fixtures/*": ["fixtures/*"],
+      "@utils/*": ["utils/*"]
+    },
+    
+    "ignoreDeprecations": "6.0"
+  },
+  "include": [
+    "tests",
+    "pages",
+    "fixtures",
+    "utils",
+    "test-data",
+    "playwright.config.ts"
+  ]
+}
