@@ -33,4 +33,30 @@ export class InventoryPage {
     const texts = await this.itemPrices.allTextContents();
     return texts.map((t) => Number(t.replace(/[^0-9.-]/g, '')));
   }
+
+  async addItemToCartByName(name: string) {
+    const card = this.inventoryItems.filter({
+      has: this.page.getByTestId('inventory-item-name').filter({ hasText: name }),
+    });
+    await card.getByRole('button', { name: 'Add to cart' }).click();
+  }
+
+  async removeItemFromCartByName(name: string) {
+    const card = this.inventoryItems.filter({
+      has: this.page.getByTestId('inventory-item-name').filter({ hasText: name }),
+    });
+    await card.getByRole('button', { name: 'Remove' }).click();
+  }
+
+  async getCartCount(): Promise<number> {
+    if (!(await this.cartBadge.isVisible().catch(() => false))) {
+      return 0;
+    }
+    const text = await this.cartBadge.textContent();
+    return text ? Number(text) : 0;
+  }
+
+  async goToCart() {
+    await this.cartLink.click();
+  }
 }
