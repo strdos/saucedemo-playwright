@@ -48,6 +48,20 @@ export class InventoryPage {
     await card.getByRole('button', { name: 'Remove' }).click();
   }
 
+  async addItemsToCart(items: string | string[]) {
+    const products = Array.isArray(items) ? items : [items];
+    for (const item of items) {
+      await this.addItemToCartByName(item);
+    }
+  }
+
+  async removeItemsFromCart(items: string | string[]) {
+    const products = Array.isArray(items) ? items : [items];
+    for (const item of items) {
+      await this.removeItemFromCartByName(item);
+    }
+  }
+
   async getCartCount(): Promise<number> {
     if (!(await this.cartBadge.isVisible().catch(() => false))) {
       return 0;
