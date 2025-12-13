@@ -50,14 +50,14 @@ export class InventoryPage {
 
   async addItemsToCart(items: string | string[]) {
     const products = Array.isArray(items) ? items : [items];
-    for (const item of items) {
+    for (const item of products) {
       await this.addItemToCartByName(item);
     }
   }
 
   async removeItemsFromCart(items: string | string[]) {
     const products = Array.isArray(items) ? items : [items];
-    for (const item of items) {
+    for (const item of products) {
       await this.removeItemFromCartByName(item);
     }
   }
