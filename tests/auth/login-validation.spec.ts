@@ -23,18 +23,14 @@ test.describe('Login - credential validation (standard user)', () => {
   });
 
   test('shows error for invalid username with valid password', async () => {
-    await loginPage.username.fill('invalid_user');
-    await loginPage.password.fill(PASSWORD);
-    await loginPage.loginButton.click();
+    await loginPage.login('invalid_user', PASSWORD);
 
     await expect(loginPage.error).toBeVisible();
     await expect(loginPage.error).toHaveText(loginErrors.invalidCredentials);
   });
 
   test('shows error for valid username with invalid password', async () => {
-    await loginPage.username.fill(users.standard);
-    await loginPage.password.fill('invalid_password');
-    await loginPage.loginButton.click();
+    await loginPage.login(users.standard, 'invalid_password');
 
     await expect(loginPage.error).toBeVisible();
     await expect(loginPage.error).toHaveText(loginErrors.invalidCredentials);
