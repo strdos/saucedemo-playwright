@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 
 export class LoginPage {
-  constructor(private page: Page) {}
+  constructor(private readonly page: Page) {}
 
   readonly username = this.page.getByTestId('username');
   readonly password = this.page.getByTestId('password');

@@ -3,7 +3,7 @@ import { Page } from '@playwright/test';
 export class InventoryPage {
   static readonly url = '/inventory.html';
 
-  constructor(private page: Page) {}
+  constructor(private readonly page: Page) {}
 
   readonly title = this.page.getByTestId('title'); // "Products"
 
