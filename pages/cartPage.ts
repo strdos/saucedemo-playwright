@@ -13,6 +13,8 @@ export class CartPage {
   readonly itemNames = this.page.getByTestId('inventory-item-name');
   readonly itemPrices = this.page.getByTestId('inventory_item_price');
 
+  readonly removeButton = this.page.getByRole('button', { name: 'Remove' });
+
   readonly continueShoppingButton = this.page.getByTestId('continue-shopping');
   readonly checkoutButton = this.page.getByTestId('checkout');
 
