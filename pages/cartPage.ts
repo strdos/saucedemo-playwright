@@ -13,13 +13,15 @@ export class CartPage {
   readonly itemNames = this.page.getByTestId('inventory-item-name');
   readonly itemPrices = this.page.getByTestId('inventory_item_price');
 
-  readonly removeButton = this.page.getByRole('button', { name: 'Remove' });
-
   readonly continueShoppingButton = this.page.getByTestId('continue-shopping');
   readonly checkoutButton = this.page.getByTestId('checkout');
 
   async goto() {
     await this.page.goto(CartPage.url);
+  }
+
+  async getItemCount(): Promise<number> {
+    return this.cartItems.count();
   }
 
   async getItemNames(): Promise<string[]> {
@@ -30,5 +32,18 @@ export class CartPage {
   async getItemPrices(): Promise<number[]> {
     const texts = await this.itemPrices.allTextContents();
     return texts.map((t) => Number(t.replace(/[^0-9.-]/g, '')));
+  }
+
+  async removeItem(productName: string) {
+    const item = this.cartItems.filter({ hasText: productName });
+    await item.getByRole('button', { name: 'Remove' }).click();
+  }
+
+  async continueShopping() {
+    await this.continueShoppingButton.click();
+  }
+
+  async checkout() {
+    await this.checkoutButton.click();
   }
 }
