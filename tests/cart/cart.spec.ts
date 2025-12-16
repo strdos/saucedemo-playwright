@@ -49,7 +49,7 @@ test.describe('Cart page - standard user flows', () => {
     await inventoryPage.addItemsToCart(products.backpack);
     await inventoryPage.goToCart();
 
-    await cartPage.removeButton.click();
+    await cartPage.removeItem(products.backpack);
 
     expect(await cartPage.cartItems.count()).toBe(0);
     const itemNames = await cartPage.getItemNames();
