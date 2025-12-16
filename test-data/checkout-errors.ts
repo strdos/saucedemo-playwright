@@ -1,0 +1,5 @@
+export const checkoutErrors = {
+  firstNameRequired: 'Error: First Name is required',
+  lastNameRequired: 'Error: Last Name is required',
+  postalCodeRequired: 'Error: Postal Code is required',
+};
