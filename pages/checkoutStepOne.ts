@@ -4,6 +4,7 @@ export class CheckoutStepOnePage {
   static readonly url = '/checkout-step-one.html';
 
   constructor(private readonly page: Page) {}
+
   readonly title = this.page.getByTestId('title'); // "Checkout: Your Information"
   readonly firstNameInput = this.page.getByTestId('firstName');
   readonly lastNameInput = this.page.getByTestId('lastName');
