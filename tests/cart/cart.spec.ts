@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '@pages/loginPage';
 import { InventoryPage } from '@pages/inventoryPage';
 import { CartPage } from '@pages/cartPage';
+import { CheckoutStepOnePage } from '@pages/checkoutStepOne';
 import { users, PASSWORD } from '@test-data/users';
 import { products } from '@test-data/products';
 
@@ -67,6 +68,6 @@ test.describe('Cart page - standard user flows', () => {
     await inventoryPage.goToCart();
 
     await cartPage.checkoutButton.click();
-    await expect(page).toHaveURL(new RegExp('/checkout-step-one.html$'));
+    await expect(page).toHaveURL(new RegExp(`${CheckoutStepOnePage.url}$`));
   });
 });

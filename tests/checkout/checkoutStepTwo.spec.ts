@@ -4,6 +4,7 @@ import { InventoryPage } from '@pages/inventoryPage';
 import { CartPage } from '@pages/cartPage';
 import { CheckoutStepOnePage } from '@pages/checkoutStepOne';
 import { CheckoutStepTwoPage } from '@pages/checkoutStepTwo';
+import { CheckoutCompletePage } from '@pages/checkoutCompletePage';
 import { users, PASSWORD } from '@test-data/users';
 import { products } from '@test-data/products';
 
@@ -32,7 +33,7 @@ test.describe('Checkout step two - overview page', () => {
   });
 
   test('loads checkout overview page', async ({ page }) => {
-    await expect(page).toHaveURL(new RegExp('/checkout-step-two.html$'));
+    await expect(page).toHaveURL(new RegExp(`${CheckoutStepTwoPage.url}$`));
     await expect(checkoutStepTwoPage.title).toHaveText('Checkout: Overview');
   });
 
@@ -70,12 +71,12 @@ test.describe('Checkout step two - overview page', () => {
   test('cancel navigates back to inventory', async ({ page }) => {
     await checkoutStepTwoPage.cancel();
 
-    await expect(page).toHaveURL(new RegExp('/inventory.html$'));
+    await expect(page).toHaveURL(new RegExp(`${InventoryPage.url}$`));
   });
 
   test('finish completes checkout', async ({ page }) => {
     await checkoutStepTwoPage.finishCheckout();
 
-    await expect(page).toHaveURL(new RegExp('/checkout-complete.html$'));
+    await expect(page).toHaveURL(new RegExp(`${CheckoutCompletePage.url}$`));
   });
 });

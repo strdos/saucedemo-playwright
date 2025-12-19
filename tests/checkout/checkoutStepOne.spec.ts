@@ -3,6 +3,7 @@ import { LoginPage } from '@pages/loginPage';
 import { InventoryPage } from '@pages/inventoryPage';
 import { CartPage } from '@pages/cartPage';
 import { CheckoutStepOnePage } from '@pages/checkoutStepOne';
+import { CheckoutStepTwoPage } from '@pages/checkoutStepTwo';
 import { users, PASSWORD } from '@test-data/users';
 import { checkoutErrors } from '@test-data/checkout-errors';
 import { products } from '@test-data/products';
@@ -34,7 +35,7 @@ test.describe('Checkout step one - customer information', () => {
   test('navigates to checkout step two with valid information', async ({ page }) => {
     await checkoutStepOnePage.completeCheckoutInformation('John', 'Doe', '12345');
 
-    await expect(page).toHaveURL(new RegExp('/checkout-step-two.html$'));
+    await expect(page).toHaveURL(new RegExp(`${CheckoutStepTwoPage.url}$`));
   });
 
   test('shows error when first name is missing', async () => {
@@ -58,6 +59,6 @@ test.describe('Checkout step one - customer information', () => {
   test('cancel navigates back to cart page', async ({ page }) => {
     await checkoutStepOnePage.cancel();
 
-    await expect(page).toHaveURL(new RegExp('/cart.html$'));
+    await expect(page).toHaveURL(new RegExp(`${CartPage.url}$`));
   });
 });
