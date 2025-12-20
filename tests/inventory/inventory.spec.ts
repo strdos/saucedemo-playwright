@@ -1,18 +1,13 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '@pages/loginPage';
 import { InventoryPage } from '@pages/inventoryPage';
-import { users, PASSWORD } from '@test-data/users';
 
 test.describe('Inventory - standard user view', () => {
   let inventoryPage: InventoryPage;
 
   test.beforeEach(async ({ page }) => {
-    const loginPage = new LoginPage(page);
     inventoryPage = new InventoryPage(page);
 
-    await loginPage.goto();
-    await loginPage.login(users.standard, PASSWORD);
-
+    await page.goto(InventoryPage.url);
     await expect(page).toHaveURL(new RegExp(`${InventoryPage.url}$`));
     await expect(inventoryPage.title).toHaveText('Products');
   });

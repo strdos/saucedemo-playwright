@@ -1,10 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '@pages/loginPage';
 import { InventoryPage } from '@pages/inventoryPage';
 import { CartPage } from '@pages/cartPage';
 import { CheckoutStepOnePage } from '@pages/checkoutStepOne';
 import { CheckoutStepTwoPage } from '@pages/checkoutStepTwo';
-import { users, PASSWORD } from '@test-data/users';
 import { checkoutErrors } from '@test-data/checkout-errors';
 import { products } from '@test-data/products';
 
@@ -14,13 +12,11 @@ test.describe('Checkout step one - customer information', () => {
   let checkoutStepOnePage: CheckoutStepOnePage;
 
   test.beforeEach(async ({ page }) => {
-    const loginPage = new LoginPage(page);
     inventoryPage = new InventoryPage(page);
     cartPage = new CartPage(page);
     checkoutStepOnePage = new CheckoutStepOnePage(page);
 
-    await loginPage.goto();
-    await loginPage.login(users.standard, PASSWORD);
+    await page.goto(InventoryPage.url);
 
     await inventoryPage.addItemsToCart(products.backpack);
     await inventoryPage.goToCart();
