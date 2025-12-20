@@ -6,7 +6,6 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
 
   reporter: 'html',
@@ -20,18 +19,22 @@ export default defineConfig({
 
   projects: [
     {
-      name: 'chromium',
+      name: 'setup',
+      testMatch: /auth\.setup\.ts/,
+    },
+    {
+      name: 'standard-user',
+      dependencies: ['setup'],
+      testIgnore: /auth\//,
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'test-results/storageStates/standard-user.json',
+      },
+    },
+    {
+      name: 'chromium-auth',
+      testMatch: /auth\//,
       use: { ...devices['Desktop Chrome'] },
     },
-
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
-
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
   ],
 });
