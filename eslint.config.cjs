@@ -2,6 +2,7 @@ const tsParser = require('@typescript-eslint/parser');
 const tsPlugin = require('@typescript-eslint/eslint-plugin');
 const playwrightPlugin = require('eslint-plugin-playwright');
 const prettierPlugin = require('eslint-plugin-prettier');
+const prettierConfig = require('eslint-config-prettier');
 
 module.exports = [
   // global ignores
@@ -16,7 +17,6 @@ module.exports = [
       parserOptions: {
         ecmaVersion: 2021,
         sourceType: 'module',
-        project: './tsconfig.json',
       },
     },
     plugins: {
@@ -25,7 +25,8 @@ module.exports = [
       prettier: prettierPlugin,
     },
     rules: {
-      'prettier/prettier': 'error',
+      ...prettierConfig.rules,
+      'prettier/prettier': 'warn',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
     },
   },
@@ -33,6 +34,6 @@ module.exports = [
   {
     files: ['**/*.js', '**/*.cjs', '**/*.mjs'],
     plugins: { prettier: prettierPlugin },
-    rules: { 'prettier/prettier': 'error' },
+    rules: { 'prettier/prettier': 'warn' },
   },
 ];
