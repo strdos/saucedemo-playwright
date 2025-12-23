@@ -17,10 +17,11 @@
       "@pages/*": ["pages/*"],
       "@test-data/*": ["test-data/*"],
       "@fixtures/*": ["fixtures/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@components/*": ["components/*"]
     },
 
     "ignoreDeprecations": "6.0"
   },
-  "include": ["tests", "pages", "fixtures", "utils", "test-data", "playwright.config.ts"]
+  "include": ["tests", "pages", "components", "fixtures", "utils", "test-data", "playwright.config.ts"]
 }
